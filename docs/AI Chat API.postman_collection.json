@@ -18,11 +18,16 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"tedassddst@example.com\",\r\n    \"password\": \"password123\"\r\n}"
+							"raw": "{\r\n    \"email\": \"test@example.com\",\r\n    \"password\": \"password123\"\r\n}"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/api/users/auth",
@@ -47,6 +52,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -80,6 +90,11 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{TOKEN}}"
+							},
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -114,6 +129,11 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{TOKEN}}"
+							},
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -154,11 +174,16 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"message\": \"What is the capital of France?\"}"
+							"raw": "{\r\n    \"message\": \"What is the capital of France?\"\r\n}"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/api/chats/{{CHAT_ID}}/completion",
@@ -188,11 +213,16 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"message\": \"What is the capital of France?s dene\"}"
+							"raw": "{ \"message\": \"Ikinci deneme\" }"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/api/chats/completion",
@@ -222,6 +252,11 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{TOKEN}}"
+							},
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -246,6 +281,11 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer {{TOKEN}}"
+							},
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -276,6 +316,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -306,7 +351,13 @@
 					"name": "Liveness Probe (/live)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{BASE_URL}}/live",
 							"host": [
@@ -324,7 +375,13 @@
 					"name": "Readiness Probe (/ready)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{BASE_URL}}/ready",
 							"host": [
@@ -342,7 +399,13 @@
 					"name": "Full Health Check (/health)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "X-Firebase-AppCheck",
+								"value": "{{FIREBASE_TOKEN}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{BASE_URL}}/health",
 							"host": [
@@ -374,6 +437,11 @@
 			"key": "CHAT_ID",
 			"value": "550e8400-e29b-41d4-a716-446655440000",
 			"type": "string"
+		},
+		{
+			"key": "FIREBASE_TOKEN",
+			"value": "",
+			"type": "default"
 		}
 	]
 }

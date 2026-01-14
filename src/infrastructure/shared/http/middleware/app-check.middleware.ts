@@ -7,7 +7,7 @@ export async function appCheckMiddleware(
   req: AuthenticatedRequest,
   _reply: FastifyReply
 ): Promise<void> {
-  const token = req.headers['x-firebase-app-check'];
+  const token = req.headers['x-firebase-appcheck'];
 
   if (!token) {
     throw new MissingAppCheckTokenError();

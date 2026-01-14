@@ -222,7 +222,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"message\": \"Ikinci deneme\" }"
+							"raw": "{ \"message\": \"Question\" }"
 						},
 						"url": {
 							"raw": "{{BASE_URL}}/api/chats/completion",

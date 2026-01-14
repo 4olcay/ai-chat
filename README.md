@@ -3,7 +3,6 @@
 ```bash
 npm install
 cp .env.example .env
-docker-compose up -d
 npm run db:migrate
 npm run db:seed
 npm run dev

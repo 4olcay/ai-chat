@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "cdb63956-2422-4bfe-9c2b-3aad812d9e32",
+		"name": "AI Chat API",
+		"description": "Complete API testing collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18521626"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"tedassddst@example.com\",\r\n    \"password\": \"password123\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/auth",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"auth"
+							]
+						},
+						"description": "Login with test credentials to get JWT token"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@example.com\",\r\n    \"name\": \"Test\",\r\n    \"password\": \"password123\"\r\n}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "Login with test credentials to get JWT token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chats",
+			"item": [
+				{
+					"name": "List Chats",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/chats?limit=10&offset=0",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"chats"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Get user's active chats with pagination"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Chat History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/chats/{{CHAT_ID}}/history?limit=20&offset=0",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"chats",
+								"{{CHAT_ID}}",
+								"history"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						},
+						"description": "Get chat history with pagination"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Completion for Chat",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"message\": \"What is the capital of France?\"}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/chats/{{CHAT_ID}}/completion",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"chats",
+								"{{CHAT_ID}}",
+								"completion"
+							]
+						},
+						"description": "Create AI completion. Returns JSON when STREAMING_ENABLED=false"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Completion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"message\": \"What is the capital of France?s dene\"}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/chats/completion",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"chats",
+								"completion"
+							]
+						},
+						"description": "Create AI completion. Returns JSON when STREAMING_ENABLED=false"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Feature Flags",
+			"item": [
+				{
+					"name": "Get All Feature Flags",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/feature-flags",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"feature-flags"
+							]
+						},
+						"description": "Get all feature flags and their current values"
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Feature Flag",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/feature-flags/STREAMING_ENABLED/toggle",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"feature-flags",
+								"STREAMING_ENABLED",
+								"toggle"
+							]
+						},
+						"description": "Toggle a feature flag value (true/false)"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Feature Flag",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"value\": \"true\"}"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/feature-flags/STREAMING_ENABLED",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"feature-flags",
+								"STREAMING_ENABLED"
+							]
+						},
+						"description": "Update feature flag value"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health Checks",
+			"item": [
+				{
+					"name": "Liveness Probe (/live)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/live",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"live"
+							]
+						},
+						"description": "Liveness probe - always returns 200"
+					},
+					"response": []
+				},
+				{
+					"name": "Readiness Probe (/ready)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/ready",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"ready"
+							]
+						},
+						"description": "Readiness probe - returns 200 if ready to serve"
+					},
+					"response": []
+				},
+				{
+					"name": "Full Health Check (/health)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/health",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"health"
+							]
+						},
+						"description": "Full health check with database connectivity test"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1MDI1ODk0YS0wZjM4LTQwOGItODJhNS1kMzM0ZWU1MzQ5ZTYiLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJpYXQiOjE3MDAwMDAwMDB9.test",
+			"type": "string"
+		},
+		{
+			"key": "CHAT_ID",
+			"value": "550e8400-e29b-41d4-a716-446655440000",
+			"type": "string"
+		}
+	]
+}
